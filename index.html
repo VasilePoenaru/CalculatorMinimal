@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator minimal</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+    }
+    input[type="text"], select, input[type="button"] {
+        margin: 5px;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Calculator minimal</h2>
+    <!-- Creăm un formular pentru a prelua datele de la utilizator: -->
+        <form>
+            <input type="text" id="primulNumar" placeholder="Introdu primul număr">
+            <select id="operator">
+                <option value="+">+ (adunare)</option>
+                <option value="-">- (scădere)</option>
+                <option value="*">* (înmulțire)</option>
+                <option value="/">/ împărțire</option>
+            </select>
+        <input type="text" id="alDoileaNumar" placeholder="Introdu al dolea număr">
+        <input type="button" value="Click aici pentru a afla rezultatul!" onclick="calculate()">
+        <input type="button" value="Click aici pentru a o lua de la capăt!" onclick="reset()">
+        </form>
+</div>
+
+ <!-- Introducem progrămelul JavaScript pentru a prelucra datele preluate de la utilizator: -->
+<script>
+function calculate() {
+    var primulNumar = parseFloat(document.getElementById("primulNumar").value);
+    var operator = document.getElementById("operator").value;
+    var alDoileaNumar = parseFloat(document.getElementById("alDoileaNumar").value);
+    var rezultat;
+
+    switch(operator) {
+        case "+":
+            rezultat = primulNumar + alDoileaNumar;
+            break;
+        case "-":
+            rezultat = primulNumar - alDoileaNumar;
+            break;
+        case "*":
+            rezultat = primulNumar * alDoileaNumar;
+            break;
+        case "/":
+            rezultat = primulNumar / alDoileaNumar;
+            break;
+        default:
+            alert("Acest operator nu este valabil!");
+            return;
+    }
+    <!-- Afișăm rezultatul: -->
+    alert("Rezultatul este: " + rezultat);
+}
+
+function reset() {
+    document.getElementById("primulNumar").value = "";
+    document.getElementById("alDoileaNumar").value = "";
+    document.getElementById("operator").selectedIndex = 0;
+}
+</script>
+</body>
+</html>
